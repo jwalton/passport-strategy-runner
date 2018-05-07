@@ -1,5 +1,7 @@
 # passport-strategy-runner
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jwalton/passport-strategy-runner.svg)](https://greenkeeper.io/)
+
 [![NPM version](https://badge.fury.io/js/passport-strategy-runner.svg)](https://npmjs.org/package/passport-strategy-runner)
 [![Build Status](https://travis-ci.org/jwalton/passport-strategy-runner.svg)](https://travis-ci.org/jwalton/passport-strategy-runner)
 [![Coverage Status](https://coveralls.io/repos/jwalton/passport-strategy-runner/badge.svg)](https://coveralls.io/r/jwalton/passport-strategy-runner)
