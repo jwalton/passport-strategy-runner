@@ -48,8 +48,8 @@ export type StrategyRunnerCallback = ( err: any, result?: StrategyResult ) => vo
  *   * `{type: 'pass'}`
  *
  */
-export function runStrategy<T extends passport.Strategy>(
-    strategy: T,
+export function runStrategy(
+    strategy: passport.Strategy,
     req: http.IncomingMessage,
     options: object,
     done: StrategyRunnerCallback
@@ -69,8 +69,8 @@ export function runStrategy<T extends passport.Strategy>(
  *   * `{type: 'pass'}`
  *
  */
-export function runStrategy<T extends passport.Strategy>(
-    strategy: T,
+export function runStrategy(
+    strategy: passport.Strategy,
     req: http.IncomingMessage,
     done: StrategyRunnerCallback
 ) : void;
@@ -89,14 +89,14 @@ export function runStrategy<T extends passport.Strategy>(
  *   * `{type: 'pass'}`
  *
  */
-export function runStrategy<T extends passport.Strategy>(
-    strategy: T,
+export function runStrategy(
+    strategy: passport.Strategy,
     req: http.IncomingMessage,
     options?: object,
 ) : Promise<StrategyResult>;
 
-export function runStrategy<T extends passport.Strategy>(
-    strategy: T,
+export function runStrategy(
+    strategy: passport.Strategy,
     req: http.IncomingMessage,
     options?: object | StrategyRunnerCallback,
     done?: StrategyRunnerCallback
@@ -107,7 +107,8 @@ export function runStrategy<T extends passport.Strategy>(
     }
 
     return pb.addPromise<StrategyResult>(done, (done: StrategyRunnerCallback) => {
-        const runInstance: passport.StrategyCreated<T> = Object.create(strategy);
+        const runInstance: passport.StrategyCreatedStatic & passport.Strategy =
+            Object.create(strategy);
 
         runInstance.success = (user, info) => {
             done(null, {type: 'success', user, info});
