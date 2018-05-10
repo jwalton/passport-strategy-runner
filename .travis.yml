@@ -11,15 +11,15 @@ cache:
 before_install:
   - npm install -g npm
   - npm install -g nsp
-  # - npm install -g greenkeeper-lockfile@1
+  - npm install -g greenkeeper-lockfile@1
 install:
-  - travis_retry npm install
+  - NPM_CONFIG_AUDIT=false travis_retry npm install
 before_script:
   - nsp check
-  # - greenkeeper-lockfile-update
+  - greenkeeper-lockfile-update
 after_script:
   # Only the first job will upload the lockfile
-  # - greenkeeper-lockfile-upload
+  - greenkeeper-lockfile-upload
 after_success:
   - 'cat ./coverage/lcov.info | ./node_modules/.bin/coveralls'
 
