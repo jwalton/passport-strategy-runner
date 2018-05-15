@@ -43,8 +43,6 @@ resolves to the result.  The result will be an object of one of the following
 forms:
 
 * `{type: 'success', user, info}`
-* `{type: 'fail', challenge, status}`
+* `{type: 'fail', challenge, status, message, messageType}`
 * `{type: 'redirect', url, status}`
 * `{type: 'pass'}`
-
-Copyright 2018 Jason Walton

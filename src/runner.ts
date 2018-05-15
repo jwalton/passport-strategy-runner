@@ -13,6 +13,8 @@ export interface StrategyFailResult {
     type: 'fail';
     challenge: string | undefined;
     status: number | undefined;
+    message: string | undefined;
+    messageType: string | undefined;
 }
 
 export interface StrategyRedirectResult {
@@ -114,12 +116,23 @@ export function runStrategy(
             done(null, {type: 'success', user, info});
         };
 
-        runInstance.fail = (challenge, status) => {
-            if (typeof challenge === 'number') {
+        runInstance.fail = (chlng, status) => {
+            let challenge = chlng as any;
+            let message : string | undefined;
+            let messageType : string | undefined;
+
+            if(typeof challenge === 'number') {
                 status = challenge;
                 challenge = undefined;
             }
-            done(null, {type: 'fail', challenge, status});
+
+            if(challenge && (challenge.message || challenge.type)) {
+                message = challenge.message;
+                messageType = challenge.type || 'error';
+                challenge = undefined;
+            }
+
+            done(null, {type: 'fail', message, messageType, challenge, status});
         };
 
         runInstance.redirect = (url, status) => {

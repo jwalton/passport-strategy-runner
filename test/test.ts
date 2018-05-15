@@ -53,6 +53,8 @@ describe('running strategies', function() {
                     this.fail('challenge!', 404);
                 } else if(req.fail === 'status') {
                     this.fail(404);
+                } else if(req.fail === 'message') {
+                    this.fail({message: 'Hello'});
                 } else {
                     this.fail();
                 }
@@ -60,19 +62,54 @@ describe('running strategies', function() {
 
             this.req.fail = 'challenge';
             expect(await runStrategy(successStrategy, this.req, OPTIONS), this.req.fail)
-                .to.eql({type: 'fail', challenge: 'challenge!', status: undefined});
+                .to.eql({
+                    type: 'fail',
+                    challenge: 'challenge!',
+                    status: undefined,
+                    message: undefined,
+                    messageType: undefined
+                });
 
             this.req.fail = 'challenge+status';
             expect(await runStrategy(successStrategy, this.req, OPTIONS), this.req.fail)
-                .to.eql({type: 'fail', challenge: 'challenge!', status: 404});
+                .to.eql({
+                    type: 'fail',
+                    challenge: 'challenge!',
+                    status: 404,
+                    message: undefined,
+                    messageType: undefined
+                });
 
             this.req.fail = 'status';
             expect(await runStrategy(successStrategy, this.req, OPTIONS), this.req.fail)
-                .to.eql({type: 'fail', challenge: undefined, status: 404});
+                .to.eql({
+                    type: 'fail',
+                    challenge: undefined,
+                    status: 404,
+                    message: undefined,
+                    messageType: undefined
+                });
 
             this.req.fail = 'none';
             expect(await runStrategy(successStrategy, this.req, OPTIONS), this.req.fail)
-                .to.eql({type: 'fail', challenge: undefined, status: undefined});
+                .to.eql({
+                    type: 'fail',
+                    challenge: undefined,
+                    status: undefined,
+                    message: undefined,
+                    messageType: undefined
+            });
+
+            this.req.fail = 'message';
+            expect(await runStrategy(successStrategy, this.req, OPTIONS), this.req.fail)
+                .to.eql({
+                    type: 'fail',
+                    challenge: undefined,
+                    status: undefined,
+                    message: 'Hello',
+                    messageType: 'error'
+            });
+
         });
 
         it('should run a strategy that redirects a user', async function() {
