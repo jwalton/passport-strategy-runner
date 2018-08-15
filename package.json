@@ -63,7 +63,7 @@
     "coveralls": "^3.0.1",
     "husky": "^1.0.0-rc.4",
     "lint-staged": "^7.1.0",
-    "markdownlint-cli": "^0.12.0",
+    "markdownlint-cli": "^0.13.0",
     "mocha": "^5.1.1",
     "nyc": "^12.0.1",
     "passport-strategy": "^1.0.0",
