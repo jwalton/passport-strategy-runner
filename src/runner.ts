@@ -104,7 +104,7 @@ export function runStrategy(
     done?: StrategyRunnerCallback
 ) : Promise<StrategyResult> | void {
     if(!done && typeof options === 'function') {
-        done = options;
+        done = options as StrategyRunnerCallback;
         options = {};
     }
 
