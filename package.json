@@ -64,7 +64,7 @@
     "lint-staged": "^8.0.0",
     "markdownlint-cli": "^0.13.0",
     "mocha": "^5.1.1",
-    "nyc": "^12.0.1",
+    "nyc": "^13.2.0",
     "passport-strategy": "^1.0.0",
     "semantic-release": "^15.13.3",
     "ts-node": "^7.0.0",
