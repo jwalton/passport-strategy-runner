@@ -14,7 +14,6 @@ before_install:
 install:
   - NPM_CONFIG_AUDIT=false travis_retry npm install
 before_script:
-  - npm audit
   - greenkeeper-lockfile-update
 after_script:
   # Only the first job will upload the lockfile
