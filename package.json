@@ -82,7 +82,7 @@
     ]
   },
   "dependencies": {
-    "@types/passport": "^0.4.5",
+    "@types/passport": "^1.0.0",
     "@types/passport-strategy": "^0.2.33",
     "promise-breaker": "^4.1.13"
   }
