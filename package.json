@@ -66,7 +66,7 @@
     "passport-strategy": "^1.0.0",
     "semantic-release": "^16.0.0",
     "ts-node": "^8.0.3",
-    "tslint": "^5.12.1",
+    "tslint": "^6.0.0",
     "typescript": "^3.5.1"
   },
   "husky": {
